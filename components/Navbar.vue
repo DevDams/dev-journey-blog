@@ -3,9 +3,9 @@
     <div class="navbar relative fixed top-0 w-full h-16 bg-black">
       <div class="main w-11/12 h-full mx-auto flex items-center justify-between">
       <!-- Left -->
-        <div class="logo sm:w-auto h-full flex items-center justify-between">
+        <div class="logo pl-4 sm:w-auto h-full flex items-center justify-between">
           <h1 class="text-white font-medium text-3xl">
-            <nuxt-link to="/">Dev journey</nuxt-link>
+            <nuxt-link to="/">Dev x</nuxt-link>
           </h1>
           <div class="burger-btn">
             <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="70" onclick="this.classList.toggle('active')" @click="() => slideMenu = !slideMenu">
@@ -56,7 +56,7 @@
           </div>
         </div>
         <!-- Mobile menu -->
-        <div :class="slideMenu ? 'show-menu' : 'hide-menu'" class="mobile-main-content bg-neutral-900 flex flex-col items-center justify-center shadow-md">
+        <div :class="slideMenu ? 'show-menu' : 'hide-menu'" class="mobile-main-content bg-neutral-900 flex flex-col items-center justify-center shadow-lg">
           <div class="menu-items z-20">
             <ul class="inline text-white">
               <li class="block my-2">
