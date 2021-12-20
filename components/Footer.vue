@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="footer absolute bottom-0 w-full h-12 border-t border-t-gray-200">
+    <div class="footer w-full h-12 border-t border-t-gray-200 mt-32">
       <div class="container w-11/12 h-full mx-auto flex items-center justify-between">
         <div class="copyright">
           <p class="font-medium">&copy; 2022 Tous droits réservés</p>

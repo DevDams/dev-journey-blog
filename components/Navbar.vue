@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="navbar relative fixed top-0 w-full h-16 bg-black">
+    <div class="navbar fixed top-0 w-full h-16 bg-black">
       <div class="main w-11/12 h-full mx-auto flex items-center justify-between">
       <!-- Left -->
         <div class="logo pl-4 sm:w-auto h-full flex items-center justify-between">
