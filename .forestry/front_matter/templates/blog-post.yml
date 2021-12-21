@@ -34,3 +34,5 @@ fields:
     date_format: 
     time_format: 
     display_utc: false
+pages:
+- content/articles/le-developpement-front-end-qu-est-ce-que-c-est.md
