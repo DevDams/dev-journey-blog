@@ -4,8 +4,8 @@
       <div class="main w-11/12 h-full mx-auto flex items-center justify-between">
       <!-- Left -->
         <div class="logo pl-4 sm:w-auto h-full flex items-center justify-between">
-          <h1 class="text-white font-medium text-3xl">
-            <nuxt-link to="/">Dev x</nuxt-link>
+          <h1 class="text-white font-medium text-4xl px-3 py-5 flex items-center justify-center border-2 border-violet-600">
+            <nuxt-link to="/" class="mt-1">Dev-x</nuxt-link>
           </h1>
           <div class="burger-btn">
             <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="70" onclick="this.classList.toggle('active')" @click="() => slideMenu = !slideMenu">
@@ -102,6 +102,11 @@ export default {
 </script>
 
 <style scoped>
+.logo h1 {
+  font-family: 'Horta';
+  line-height: 0;
+}
+
 .show-search-bar {
   top: 60px;
   right: 0;
