@@ -18,27 +18,29 @@
       <!-- Last article -->
       <div class="main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl px-6 mx-auto">
         <div class="last-article-card mt-16">
-          <h4 class="underline decoration-indigo-600 text-center decoration-wavy font-extrabold text-2xl">Dernier article publié</h4>
+          <h4 class="underline decoration-violet-500 text-center decoration-wavy font-extrabold text-2xl">Dernier article publié</h4>
           <div class="last-card flex flex-col-reverse md:flex md:flex-row md:items-center mt-16 w-11/12 mx-auto md:w-full h-auto border-2 border-gray-100 shadow-lg rounded-md bg-white">
             <div class="left p-5 w-full md:w-1/2 h-full rounded-lg">
-              <h1 class="text-2xl sm:text-3xl md:text-3xl font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              <p class="text-md mt-2 font-medium text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
+              <h1 class="text-2xl sm:text-3xl md:text-3xl text-violet-500 font-medium"> {{ lastArticle.title }} </h1>
+              <p class="text-md mt-4 font-medium text-gray-800">{{ lastArticle.description }}</p>
               <p class="text-sm sm:text-lg text-gray-400 font-normal mt-4">Publié le : 07 Janvier 2022</p>
             </div>
-            <div class="right p-4 w-full md:w-1/2 h-full rounded-lg">
-              
+            <div v-if="getImg(lastArticle.thumbnail)" class="right w-full md:w-1/2 h-full rounded-lg">
+              <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full w-full rounded-lg">
             </div>
           </div>
         </div>
       </div>
       <!-- Articles recents -->
       <div class="recent-main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-24">
-        <h4 class="underline text-center decoration-indigo-600 decoration-wavy font-extrabold text-2xl">Articles récents</h4>
+        <h4 class="underline text-center decoration-violet-500 decoration-wavy font-extrabold text-2xl">Articles récents</h4>
         <div class="recent-articles mt-16 w-10/12 mx-auto md:w-full md:flex md:flex-wrap md:items-center md:justify-between lg:flex lg:items-center lg:justify-around h-auto">
           <div class="recent-article-card bg-white mb-10 md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100"></div>
+            <div v-if="getImg(lastArticle.thumbnail)" class="top h-64 bg-red-100">
+              <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg">
+            </div>
             <div class="bottom p-4">
-              <h1 class="text-2xl font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              <h1 class="text-2xl text-violet-500 font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
               <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
               <p class="text-md text-gray-400 font-medium mt-2">Publié le : 07 Janvier 2022</p>
             </div>
@@ -46,7 +48,7 @@
           <div class="recent-article-card bg-white mb-10 md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
             <div class="top h-64 bg-red-100"></div>
             <div class="bottom p-4">
-              <h1 class="text-2xl font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              <h1 class="text-2xl text-violet-500 font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
               <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
               <p class="text-md text-gray-400 font-medium mt-2">Publié le : 07 Janvier 2022</p>
             </div>
@@ -54,7 +56,7 @@
           <div class="recent-article-card bg-white mb-10 md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
             <div class="top h-64 bg-red-100"></div>
             <div class="bottom p-4">
-              <h1 class="text-2xl font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              <h1 class="text-2xl text-violet-500 font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
               <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
               <p class="text-md text-gray-400 font-medium mt-2">Publié le : 07 Janvier 2022</p>
             </div>
@@ -74,16 +76,36 @@
 export default {
   data() {
     return {
-      articles: []
+      articles: [],
+      lastArticle: {}
     }
   },
   async mounted() {
-    this.articles = await this.$content('articles').fetch().catch((err) => {
+    const data = await this.$content('articles').fetch().catch((err) => {
       console.error({ statusCode: 404, message: 'Article introuvable', error: err.message })
     })
 
-    const sortedActivities = this.articles.slice().sort((a, b) => b.createdAt - a.createdAt)
-    console.log(sortedActivities)
+    this.articles = data.slice().sort((a, b) => b.createdAt - a.createdAt)
+    this.lastArticle = this.articles[0]
+
+    console.log(this.lastArticle)
+  },
+  methods: {
+    getImg(img) {
+        if (img) {
+          const image = img
+
+          const imgName = image.split('/')
+          console.log(imgName[imgName.length - 1])
+          return imgName[imgName.length - 1]
+        } else {
+          console.log('bobo')
+        }
+    },
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
+    }
   },
 }
 </script>
