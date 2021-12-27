@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="navbar fixed top-0 w-full h-16 bg-black">
+    <div class="navbar fixed top-0 w-full h-16 bg-black shadow-lg">
       <div class="main w-11/12 h-full mx-auto flex items-center justify-between">
       <!-- Left -->
         <div class="logo pl-4 sm:w-auto h-full flex items-center justify-between">
-          <h1 class="text-white font-medium text-4xl px-3 py-5 flex items-center justify-center border-2 border-violet-600">
+          <h1 class="text-white font-medium text-4xl px-3 py-5 flex items-center justify-center">
             <nuxt-link to="/" class="mt-1">Dev-x</nuxt-link>
           </h1>
           <div class="burger-btn">
@@ -56,7 +56,7 @@
           </div>
         </div>
         <!-- Mobile menu -->
-        <div :class="slideMenu ? 'show-menu' : 'hide-menu'" class="mobile-main-content bg-neutral-900 flex flex-col items-center justify-center shadow-lg">
+        <div :class="slideMenu ? 'show-menu' : 'hide-menu'" class="mobile-main-content bg-black flex flex-col items-center justify-center shadow-lg">
           <div class="menu-items z-20">
             <ul class="inline text-white">
               <li class="block my-2">

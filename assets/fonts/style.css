@@ -1,10 +1,12 @@
 @font-face {
-  font-family: 'Horta';
-  /* src: url('Horta.eot'); */
-  src: local('Horta'), local('Horta'),
-      /* url('Horta.eot?#iefix') format('embedded-opentype'), */
-      /* url('Horta.woff2') format('woff2'), */
-      /* url('Horta.woff') format('woff'), */
-      url('Horta.otf') format('otf'),
-      /* url('Horta.ttf') format('truetype'); */
+    font-family: 'Horta';
+    src: url('Horta.eot');
+    src: url('Horta.eot?#iefix') format('embedded-opentype'),
+        url('Horta.woff2') format('woff2'),
+        url('Horta.woff') format('woff'),
+        url('Horta.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
+
