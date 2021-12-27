@@ -71,7 +71,21 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      articles: []
+    }
+  },
+  async mounted() {
+    this.articles = await this.$content('articles').fetch().catch((err) => {
+      console.error({ statusCode: 404, message: 'Article introuvable', error: err.message })
+    })
+
+    const sortedActivities = this.articles.slice().sort((a, b) => b.createdAt - a.createdAt)
+    console.log(sortedActivities)
+  },
+}
 </script>
 
 <style scoped>

@@ -95,7 +95,7 @@ export default {
   data() {
     return {
       visibleSearchBar: false,
-      slideMenu: false
+      slideMenu: false,
     }
   },
 }
