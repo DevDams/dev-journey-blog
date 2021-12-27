@@ -86,7 +86,7 @@ export default {
     })
 
     this.articles = data.slice().sort((a, b) => b.createdAt - a.createdAt)
-    this.lastArticle = this.articles[0]
+    this.lastArticle = this.articles[this.articles.length - 1]
 
     console.log(this.lastArticle)
   },
