@@ -23,7 +23,7 @@
             <div class="left p-5 w-full md:w-1/2 h-full rounded-lg">
               <h1 class="text-2xl sm:text-3xl md:text-3xl text-violet-500 font-medium"> {{ lastArticle.title }} </h1>
               <p class="text-md mt-4 font-medium text-gray-800">{{ lastArticle.description }}</p>
-              <p class="text-sm sm:text-lg text-gray-400 font-normal mt-4">Publié le : 07 Janvier 2022</p>
+              <p class="text-sm sm:text-md text-gray-400 font-normal mt-4">Publié le : {{ formatDate(lastArticle.createdAt) }} </p>
             </div>
             <div v-if="getImg(lastArticle.thumbnail)" class="right w-full md:w-1/2 h-full rounded-lg">
               <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full w-full rounded-lg">
@@ -92,19 +92,33 @@ export default {
   },
   methods: {
     getImg(img) {
-        if (img) {
-          const image = img
+      if (img) {
+        const image = img
 
-          const imgName = image.split('/')
-          console.log(imgName[imgName.length - 1])
-          return imgName[imgName.length - 1]
-        } else {
-          console.log('bobo')
-        }
+        const imgName = image.split('/')
+        console.log(imgName[imgName.length - 1])
+        return imgName[imgName.length - 1]
+      } else {
+        console.log('bobo')
+      }
     },
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
+      return new Date(date).toLocaleDateString('fr', options)
+    },
+    getReadingTime(obj) {
+      if (obj) {
+        const data = JSON.stringify(obj)
+        const pop = data.split(':')
+
+        const reading = pop[1].split(',')[0]
+        const time = reading.split(' ')
+
+
+        return `${time[0][1]} ${time[1]}`
+      } else {
+        console.error('No element found')
+      }
     }
   },
 }

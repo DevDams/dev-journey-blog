@@ -6,7 +6,7 @@
           <p class="font-medium">&copy; 2022 Tous droits réservés</p>
         </div>
         <div class="custom-text">
-          <p class="font-medium">Contruit avec ♥ par <span class="underline decoration-rose-500 decoration-wavy"><a href="http://dams-x.netlify.app">Aimé</a></span></p>
+          <p class="font-medium">Contruit avec ♥ par <span class="underline decoration-rose-500 decoration-wavy"><a href="http://damsx.netlify.app" target="_blank">Aimé</a></span></p>
         </div>
       </div>
     </div>
