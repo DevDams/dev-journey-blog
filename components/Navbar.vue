@@ -67,8 +67,8 @@
               </li>
             </ul>
           </div>
-          <div class="search-bar mt-4 mb-2 flex items-center relative">
-            <input type="text" name="search" id="search" placeholder="Rechercher..." class="bg-gray-200 h-10 pl-4 text-black text-md outline-none border border-gray-100 shadow-sm rounded-lg block">
+          <div class="search-bar mt-4 mb-2 flex items-center relative w-full">
+            <input type="text" name="search" id="search" placeholder="Rechercher..." class="bg-gray-200 w-[80%] h-10 mx-auto pl-4 text-black text-md outline-none border border-gray-100 shadow-sm rounded-lg block">
           </div>
           <div class="social-items flex items-center mt-4">
             <div class="icon mx-2">
@@ -136,7 +136,7 @@ export default {
   }
 
   .logo h1 {
-    font-size: 24px;
+    font-size: 30px;
   }
 
   .burger-btn {

@@ -21,9 +21,11 @@
           <h4 class="underline decoration-violet-500 text-center decoration-wavy font-extrabold text-2xl">Dernier article publié</h4>
           <div class="last-card flex flex-col-reverse md:flex md:flex-row md:items-center mt-16 w-full mx-auto md:w-full h-auto border-2 border-gray-100 shadow-lg rounded-md bg-white">
             <div class="left p-5 w-full md:w-1/2 h-full rounded-lg">
-              <h1 class="text-2xl sm:text-3xl md:text-3xl text-violet-700 font-medium"> {{ lastArticle.title }} </h1>
+              <nuxt-link to="/">
+                <h1 class="text-2xl sm:text-3xl md:text-3xl text-violet-700 font-medium hover:underline"> {{ lastArticle.title }} </h1>
+              </nuxt-link>
               <p class="text-md mt-4 font-medium text-gray-800">{{ lastArticle.description }}</p>
-              <p class="text-sm sm:text-md text-gray-400 font-normal mt-4">Publié le : {{ formatDate(lastArticle.createdAt) }} </p>
+              <p class="text-sm sm:text-md text-gray-400 font-normal mt-4">{{ formatDate(lastArticle.createdAt) }} - {{ getReadingTime(lastArticle.readingStats) }} de lecture</p>
             </div>
             <div v-if="getImg(lastArticle.thumbnail)" class="right w-full md:w-1/2 h-full rounded-lg">
               <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full w-full rounded-lg">
@@ -40,25 +42,31 @@
               <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg">
             </div>
             <div class="bottom p-4">
-              <h1 class="text-2xl text-violet-700 font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              <nuxt-link to="#">
+                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              </nuxt-link>
               <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-md text-gray-400 font-medium mt-2">Publié le : 07 Janvier 2022</p>
+              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
             </div>
           </div>
           <div class="recent-article-card bg-white mb-10 w-full md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
             <div class="top h-64 bg-red-100"></div>
             <div class="bottom p-4">
-              <h1 class="text-2xl text-violet-700 font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              <nuxt-link to="#">
+                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              </nuxt-link>
               <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-md text-gray-400 font-medium mt-2">Publié le : 07 Janvier 2022</p>
+              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
             </div>
           </div>
           <div class="recent-article-card bg-white mb-10 w-full md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
             <div class="top h-64 bg-red-100"></div>
             <div class="bottom p-4">
-              <h1 class="text-2xl text-violet-700 font-medium">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              <nuxt-link to="#">
+                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              </nuxt-link>
               <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-md text-gray-400 font-medium mt-2">Publié le : 07 Janvier 2022</p>
+              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
             </div>
           </div>
         </div>
