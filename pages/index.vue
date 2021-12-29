@@ -16,7 +16,7 @@
         </div>
       </div>
       <!-- Last article -->
-      <div class="main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl px-6 mx-auto">
+      <div class="main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl px-4 sm:px-6 mx-auto">
         <div class="last-article-card mt-16">
           <h4 class="underline decoration-violet-500 text-center decoration-wavy font-extrabold text-2xl">Dernier article publié</h4>
           <div class="last-card flex flex-col-reverse md:flex md:flex-row md:items-center mt-16 w-full mx-auto md:w-full h-auto border-2 border-gray-100 shadow-lg rounded-md bg-white">
@@ -36,7 +36,7 @@
       <!-- Articles recents -->
       <div class="recent-main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-24">
         <h4 class="underline text-center decoration-violet-500 decoration-wavy font-extrabold text-2xl">Articles récents</h4>
-        <div class="recent-articles mt-16 w-10/12 mx-auto md:w-full md:flex md:flex-wrap md:items-center md:justify-between lg:flex lg:items-center lg:justify-around h-auto">
+        <div class="recent-articles mt-16 w-11/12 mx-auto md:w-full md:flex md:flex-wrap md:items-center md:justify-between lg:flex lg:items-center lg:justify-around h-auto">
           <div class="recent-article-card bg-white mb-10 w-full md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
             <div v-if="getImg(lastArticle.thumbnail)" class="top h-64 bg-red-100">
               <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg">
