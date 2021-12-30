@@ -18,6 +18,10 @@ export default {}
 </script>
 
 <style scoped>
+body {
+  font-family: 'Readex Pro', sans-serif;
+}
+
 @media (max-width: 475px) {
   .footer {
     height: 4.1rem;

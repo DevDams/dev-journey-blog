@@ -133,6 +133,10 @@ export default {
 </script>
 
 <style scoped>
+body {
+  font-family: 'Readex Pro', sans-serif;
+}
+
 .hero {
   background: url('@/assets/images/hero.jpg');
   background-position: center;
