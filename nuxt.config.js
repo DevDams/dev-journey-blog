@@ -23,7 +23,8 @@ export default {
   css: [
     '@/assets/css/main.css',
     '@/assets/css/global.css',
-    '@/assets/fonts/style.css',
+    '@/assets/fonts/horta.css',
+    '@/assets/fonts/readex.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
