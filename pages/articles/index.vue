@@ -18,99 +18,22 @@
       </div>
       <hr>
       <div class="article-list mt-16 w-11/12 md:w-11/12 lg:w-10/12 max-w-screen-xl sm:px-6 mx-auto">
-        <div class="list mt-10 md:w-full md:flex md:flex-wrap md:items-center md:justify-between lg:flex lg:items-center lg:justify-between">
-          <!-- Article -->
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[47%] lg:w-[32%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100">
-              <!-- <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
+        <vue-masonry-wall :items="articles" :options="{width: 400, padding: 12}" @append="append">
+          <template v-slot:default="{item}">
+            <div class="recent-article-card bg-white mb-10 w-full h-full border-2 border-gray-100 rounded-lg shadow-lg">
+              <div class="top h-64 bg-red-100">
+                <!-- <img :src="require(`../../assets/images/${getImg(item.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
+              </div>
+              <div class="bottom p-4">
+                <nuxt-link :to="`articles/${item.slug}`">
+                  <h1 class="text-2xl text-violet-700 font-medium hover:underline">{{ item.title }}</h1>
+                </nuxt-link>
+                <p class="text-md mt-2 text-gray-900">{{ item.description }}</p>
+                <p class="text-sm md:text-md text-gray-400 font-normal mt-2">{{ formatDate(item.createdAt) }} - {{ getReadingTime(item.readingStats) }} de lecture</p>
+              </div>
             </div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <!-- Article -->
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[47%] lg:w-[32%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100">
-              <!-- <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
-            </div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <!-- Article -->
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[47%] lg:w-[32%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100">
-              <!-- <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
-            </div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <!-- Article -->
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[47%] lg:w-[32%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100">
-              <!-- <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
-            </div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <!-- Article -->
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[47%] lg:w-[32%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100">
-              <!-- <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
-            </div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <!-- Article -->
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[47%] lg:w-[32%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100">
-              <!-- <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
-            </div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <!-- Article -->
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[47%] lg:w-[32%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100">
-              <!-- <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg"> -->
-            </div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-        </div>
+          </template>
+        </vue-masonry-wall>
         <div class="load-more text-center">
           <button class="mt-6 bg-rose-500 text-white font-bold px-8 py-2 rounded-full shadow-lg shadow-rose-500/50">Afficher plus</button>
         </div>
@@ -120,8 +43,56 @@
 </template>
 
 <script>
-export default {
+import VueMasonryWall from "vue-masonry-wall";
 
+export default {
+  components: {VueMasonryWall},
+  data() {
+    return {
+      articles: [],
+      lastArticle: {}
+    }
+  },
+  async mounted() {
+    const data = await this.$content('articles').sortBy('createdAt', 'desc').fetch().catch((err) => {
+      console.error({ statusCode: 404, message: 'Article introuvable', error: err.message })
+    })
+
+    this.articles = data
+
+    console.log(data)
+  },
+  methods: {
+    getImg(img) {
+      if (img) {
+        const image = img
+
+        const imgName = image.split('/')
+        console.log(imgName[imgName.length - 1])
+        return imgName[imgName.length - 1]
+      } else {
+        console.log('bobo')
+      }
+    },
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('fr', options)
+    },
+    getReadingTime(obj) {
+      if (obj) {
+        const data = JSON.stringify(obj)
+        const pop = data.split(':')
+
+        const reading = pop[1].split(',')[0]
+        const time = reading.split(' ')
+
+
+        return `${time[0][1]} ${time[1]}`
+      } else {
+        console.error('No element found')
+      }
+    }
+  },
 }
 </script>
 
