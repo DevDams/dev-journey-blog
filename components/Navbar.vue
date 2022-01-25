@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="navbar fixed top-0 w-full h-16 bg-black shadow-lg">
-      <div class="main w-11/12 h-full mx-auto flex items-center justify-between">
+      <div class="main w-11/12 sm:w-10/12 h-full mx-auto flex items-center justify-between">
       <!-- Left -->
-        <div class="logo pl-4 sm:w-auto h-full flex items-center justify-between">
+        <div class="logo sm:w-auto h-full flex items-center justify-between">
           <h1 class="text-white font-medium text-4xl px-3 py-5 flex items-center justify-center">
             <nuxt-link to="/" class="mt-1">Dev-x</nuxt-link>
           </h1>
           <div class="burger-btn">
-            <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="70" onclick="this.classList.toggle('active')" @click="() => slideMenu = !slideMenu">
+            <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" onclick="this.classList.toggle('active')" @click="() => slideMenu = !slideMenu">
               <path
                 class="line top"
                 d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
@@ -33,25 +33,18 @@
               </li>
             </ul>
           </div>
-          <div class="search-bar ml-4 md:ml-8 flex items-center relative">
-            <input type="text" name="search" id="search" placeholder="Rechercher..." class="bg-gray-200 hidden md:h-8 md:pl-4 text-black text-md md:outline-none md:rounded-lg md:block">
-            <button class="bg-gray-200 w-8 p-2 rounded-lg outline-none border-none block md:hidden cursor-pointer z-30" @click="() => visibleSearchBar = !visibleSearchBar">
-              <img src="@/assets/svg/search.svg" alt="search icon">
-            </button>
-            <input :class="visibleSearchBar ? 'show-search-bar' : 'hide-search-bar'" type="text" name="search" id="search" placeholder="Rechercher..." class="absolute top-0 right-0 bg-gray-200 h-10 pl-4 text-black text-md outline-none shadow-xl rounded-lg">
-          </div>
           <div class="social-items hidden lg:flex lg:items-center lg:ml-8">
             <div class="icon mx-2">
-              <a href="https://www.linkedin.com/in/adamsaimedesireofficial/"><img src="@/assets/svg/linkedin-alt.svg" alt="linkedin icon"></a>
+              <a href="https://www.linkedin.com/in/adamsaimedesireofficial/"><img src="@/assets/svg/linkedin.svg" alt="linkedin icon"></a>
             </div>
             <div class="icon mx-2">
-              <a href="https://github.com/DevDams"><img src="@/assets/svg/github-alt.svg" alt="github icon"></a>
+              <a href="https://github.com/DevDams"><img src="@/assets/svg/github.svg" alt="github icon"></a>
             </div>
             <div class="icon mx-2">
-              <a href="https://twitter.com/dams9ix"><img src="@/assets/svg/twitter-alt.svg" alt="twitter icon"></a>
+              <a href="https://twitter.com/dams9ix"><img src="@/assets/svg/twitter.svg" alt="twitter icon"></a>
             </div>
             <div class="icon mx-2">
-              <a href="https://www.instagram.com/dams9ix/"><img src="@/assets/svg/instagram-alt.svg" alt="instagram icon"></a>
+              <a href="https://www.instagram.com/dams9ix/"><img src="@/assets/svg/instagram.svg" alt="instagram icon"></a>
             </div>
           </div>
         </div>
@@ -67,21 +60,18 @@
               </li>
             </ul>
           </div>
-          <div class="search-bar mt-4 mb-2 flex items-center relative w-full">
-            <input type="text" name="search" id="search" placeholder="Rechercher..." class="bg-gray-200 w-[80%] h-10 mx-auto pl-4 text-black text-md outline-none border border-gray-100 shadow-sm rounded-lg block">
-          </div>
           <div class="social-items flex items-center mt-4">
             <div class="icon mx-2">
-              <a href="https://www.linkedin.com/in/adamsaimedesireofficial/"><img src="@/assets/svg/linkedin-alt.svg" alt="linkedin icon"></a>
+              <a href="https://www.linkedin.com/in/adamsaimedesireofficial/"><img src="@/assets/svg/linkedin.svg" alt="linkedin icon"></a>
             </div>
             <div class="icon mx-2">
-              <a href="https://github.com/DevDams"><img src="@/assets/svg/github-alt.svg" alt="github icon"></a>
+              <a href="https://github.com/DevDams"><img src="@/assets/svg/github.svg" alt="github icon"></a>
             </div>
             <div class="icon mx-2">
-              <a href="https://twitter.com/dams9ix"><img src="@/assets/svg/twitter-alt.svg" alt="twitter icon"></a>
+              <a href="https://twitter.com/dams9ix"><img src="@/assets/svg/twitter.svg" alt="twitter icon"></a>
             </div>
             <div class="icon mx-2">
-              <a href="https://www.instagram.com/dams9ix/"><img src="@/assets/svg/instagram-alt.svg" alt="instagram icon"></a>
+              <a href="https://www.instagram.com/dams9ix/"><img src="@/assets/svg/instagram.svg" alt="instagram icon"></a>
             </div>
           </div>
         </div>
@@ -96,8 +86,21 @@ export default {
     return {
       visibleSearchBar: false,
       slideMenu: false,
+      searchQuery: ''
     }
   },
+  watch: {
+    async searchQuery(searchQuery) {
+      if (!searchQuery) {
+        this.articles = []
+        return
+      }
+      this.articles = await this.$content('articles')
+        .limit(6)
+        .search(searchQuery)
+        .fetch()
+    }
+  }
 }
 </script>
 
