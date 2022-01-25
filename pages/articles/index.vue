@@ -54,6 +54,9 @@ export default {
   watch: {
     async searchQuery(searchQuery) {
       if (!searchQuery) {
+        this.articles = await this.$content('articles').sortBy('createdAt', 'desc').fetch().catch((err) => {
+          console.error({ statusCode: 404, message: 'Article introuvable', error: err.message })
+        })
         this.title = 'Tout les articles'
         return
       }

@@ -19,60 +19,40 @@
       <div class="main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl px-4 sm:px-6 mx-auto">
         <div class="last-article-card mt-16">
           <h4 class="underline decoration-violet-500 text-center decoration-wavy font-extrabold text-2xl">Dernier article publié</h4>
-          <div class="last-card flex flex-col-reverse md:flex md:flex-row md:items-center mt-16 w-full mx-auto md:w-full h-auto border-2 border-gray-100 shadow-lg rounded-md bg-white">
+          <div v-if="lastArticle" class="last-card relative flex flex-col-reverse md:flex md:flex-row md:items-center mt-16 w-full mx-auto md:w-full h-auto border-2 border-gray-100 shadow-lg rounded-md bg-white z-10">
             <div class="left p-5 w-full md:w-1/2 h-full rounded-lg">
-              <nuxt-link to="/">
+              <nuxt-link :to="`articles/${lastArticle.slug}`">
                 <h1 class="text-2xl sm:text-3xl md:text-3xl text-violet-700 font-medium hover:underline"> {{ lastArticle.title }} </h1>
               </nuxt-link>
               <p class="text-md mt-4 font-medium text-gray-800">{{ lastArticle.description }}</p>
               <p class="text-sm sm:text-md text-gray-400 font-normal mt-4">{{ formatDate(lastArticle.createdAt) }} - {{ getReadingTime(lastArticle.readingStats) }} de lecture</p>
             </div>
-            <div v-if="getImg(lastArticle.thumbnail)" class="right w-full md:w-1/2 h-full rounded-lg">
-              <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full w-full rounded-lg">
+            <div v-if="getImg(lastArticle.thumbnail)" class="right w-full md:w-1/2 h-auto rounded-lg">
+              <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="md:absolute top-0 right-0 object-cover h-full w-full md:w-1/2 rounded-lg">
             </div>
           </div>
         </div>
       </div>
       <!-- Articles recents -->
-      <div class="recent-main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-24">
+      <div class="recent-main-content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-28">
         <h4 class="underline text-center decoration-violet-500 decoration-wavy font-extrabold text-2xl">Articles récents</h4>
-        <div class="recent-articles mt-16 w-11/12 mx-auto md:w-full md:flex md:flex-wrap md:items-center md:justify-between lg:flex lg:items-center lg:justify-around h-auto">
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div v-if="getImg(lastArticle.thumbnail)" class="top h-64 bg-red-100">
-              <img :src="require(`../assets/images/${getImg(lastArticle.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg">
+        <div v-if="recentArticles" class="recent-articles mt-16 w-11/12 mx-auto md:w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 h-auto">
+          <div v-for="article in recentArticles" :key="article.slug" class="recent-article-card bg-white mb-10 w-full h-full border-2 border-gray-100 rounded-lg shadow-lg">
+            <div v-if="getImg(article.thumbnail)" class="top h-64 bg-red-100">
+              <img :src="require(`../assets/images/${getImg(article.thumbnail)}`)" alt="" class="object-cover h-full rounded-lg">
             </div>
             <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
+              <nuxt-link :to="`articles/${article.slug}`">
+                <h1 class="text-2xl text-violet-700 font-medium hover:underline">{{ article.title }}</h1>
               </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100"></div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
-            </div>
-          </div>
-          <div class="recent-article-card bg-white mb-10 w-full md:w-[45%] lg:w-[30%] h-full border-2 border-gray-100 rounded-lg shadow-lg">
-            <div class="top h-64 bg-red-100"></div>
-            <div class="bottom p-4">
-              <nuxt-link to="#">
-                <h1 class="text-2xl text-violet-700 font-medium hover:underline">Comment réaliser rapidement son portfolio sans code avec Notion</h1>
-              </nuxt-link>
-              <p class="text-md mt-2 text-gray-900">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste exercitationem ullam inventore, sapiente autem assumenda sed...</p>
-              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">07 Janvier 2022</p>
+              <p class="text-md mt-2 text-gray-900">{{ article.description }}</p>
+              <p class="text-sm md:text-md text-gray-400 font-normal mt-2">{{ formatDate(article.createdAt) }} - {{ getReadingTime(article.readingStats) }} de lecture</p>
             </div>
           </div>
         </div>
         <div class="load-more text-center">
           <nuxt-link to="/articles">
-            <button class="mt-6 bg-rose-500 text-white font-bold px-8 py-2 rounded-full shadow-lg shadow-rose-500/50">Tout les articles</button>
+            <button class="mt-24 bg-rose-500 text-white font-bold px-8 py-2 rounded-full shadow-lg shadow-rose-500/50">Tout les articles</button>
           </nuxt-link>
         </div>
       </div>
@@ -85,18 +65,18 @@ export default {
   data() {
     return {
       articles: [],
-      lastArticle: {}
+      lastArticle: [],
+      recentArticles: []
     }
   },
   async mounted() {
-    const data = await this.$content('articles').fetch().catch((err) => {
+    this.articles = await this.$content('articles').sortBy('createdAt', 'desc').fetch().catch((err) => {
       console.error({ statusCode: 404, message: 'Article introuvable', error: err.message })
     })
-
-    this.articles = data.slice().sort((a, b) => b.createdAt - a.createdAt)
-    this.lastArticle = this.articles[this.articles.length - 1]
-
-    console.log(this.lastArticle)
+    this.lastArticle = this.articles.shift()
+    this.recentArticles = this.articles
+    console.log('most recent articles', this.recentArticles)
+    console.log('last article', this.lastArticle)
   },
   methods: {
     getImg(img) {
