@@ -2,7 +2,7 @@
   <div>
     <div class="prev-next w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-16">
       <hr>
-      <div class="w-96 mx-auto mt-4 flex items-center justify-around">
+      <div class="contain w-96 mx-auto mt-4 flex items-center justify-around bg-green-400">
         <NuxtLink
           v-if="prev"
           :to="`${prev.slug}`"
@@ -43,6 +43,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+@media (max-width: 410px) {
+  .
+}
 </style>
