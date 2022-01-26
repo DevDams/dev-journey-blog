@@ -49,6 +49,11 @@ export default {
     '@nuxt/content',
   ],
 
+  // Fallback page 404
+  generate: {
+    fallback: true
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
