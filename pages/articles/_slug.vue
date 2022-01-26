@@ -4,13 +4,16 @@
       <img :src="require(`../../assets/images/${getImg(article.thumbnail)}`)" alt="article thumbnail" class="w-full h-full object-cover">
     </div>
     <div class="article-info w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-10">
-      <h1 class="text-4xl md:text-5xl font-bold">{{ article.title }}</h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-indigo-500">{{ article.title }}</h1>
       <div class="date mt-4">
         {{ formatDate(article.createdAt) }} - {{ getReadingTime(article.readingStats) }} de lecture
       </div>
     </div>
     <div class="content w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-10">
       <nuxt-content :document="article" />
+    </div>
+    <div class="prev-next-article">
+      <PrevNext :prev="prev" :next="next" />
     </div>
   </div>
 </template>
@@ -19,9 +22,18 @@
 export default {
   async asyncData({ $content, params }) {
     const article = await $content('articles', params.slug).fetch()
-    console.log(article)
 
-    return { article }
+    const [prev, next] = await $content('articles')
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'desc')
+      .surround(params.slug)
+      .fetch()
+
+    return { 
+      article,
+      prev,
+      next
+    }
   },
   methods: {
     getImg(img) {
@@ -57,5 +69,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.nuxt-content {
+  color: rgb(17, 24, 39);
+}
+
+.nuxt-content h3 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 0;
+}
+
+p {
+  padding: 5px 0;
+}
 </style>

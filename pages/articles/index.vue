@@ -27,8 +27,9 @@
             <p class="text-2xl font-medium uppercase">Aucun</p>
           </div>
         </div>
-        <div class="load-more text-center">
-          <button class="mt-24 bg-rose-500 text-white font-bold px-8 py-2 rounded-full shadow-lg shadow-rose-500/50">Afficher plus</button>
+        <div class="load-more text-center mt-16">
+          <hr>
+          <button class="mt-4 bg-rose-500 text-white font-bold px-8 py-2 rounded-lg shadow-lg shadow-rose-500/50">Afficher plus</button>
         </div>
       </div>
     </div>
