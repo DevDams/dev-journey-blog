@@ -2,27 +2,33 @@
   <div>
     <div class="prev-next w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto mt-16">
       <hr>
-      <div class="contain w-96 mx-auto mt-4 flex items-center justify-around bg-green-400">
-        <NuxtLink
-          v-if="prev"
-          :to="`${prev.slug}`"
-          class="font-bold text-primary hover:underline"
-        >
-          <button class="w-44 h-9 font-medium text-md outline-none text-white font-medium bg-black shadow-md shadow-black/50 rounded-lg">
-            Arrticle precédent
-          </button>
-        </NuxtLink>
-        <span v-else>&nbsp;</span>
-        <NuxtLink
-          v-if="next"
-          :to="`${next.slug}`"
-          class="font-bold hover:underline"
-        >
-          <button class="w-44 h-9 font-medium text-md outline-none text-white bg-black shadow-md shadow-black/50 rounded-lg">
-            Article suivant
-          </button>
-        </NuxtLink>
-        <span v-else></span>
+      <div class="contain mx-auto mt-4 flex justify-between">
+        <div class="w-1/2 text-left">
+          <NuxtLink
+            v-if="prev"
+            :to="`${prev.slug}`"
+            class="font-bold"
+          >
+            <p>Article précédent:</p>
+            <button class="font-medium text-left text-md outline-none text-rose-500 font-medium hover:underline">
+              {{ prev.title }}
+            </button>
+          </NuxtLink>
+          <p v-else>Pas d'article précédent</p>
+        </div>
+        <div class="w-1/2 text-right">
+          <NuxtLink
+            v-if="next"
+            :to="`${next.slug}`"
+            class="font-bold"
+          >
+            <p>Article suivant:</p>
+            <button class="font-medium text-right text-md outline-none text-rose-500 hover:underline">
+              {{ next.title }}
+            </button>
+          </NuxtLink>
+          <p v-else>Pas d'article suivant</p>
+        </div>
       </div>
     </div>
   </div>
@@ -45,6 +51,5 @@ export default {
 
 <style scoped>
 @media (max-width: 410px) {
-  .
 }
 </style>
