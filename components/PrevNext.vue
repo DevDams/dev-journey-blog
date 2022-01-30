@@ -10,7 +10,7 @@
             class="font-bold"
           >
             <p>Article précédent:</p>
-            <button class="font-medium text-left text-md outline-none text-rose-500 font-medium hover:underline">
+            <button class="font-medium text-left text-md outline-none text-rose-400 font-medium hover:underline">
               {{ prev.title }}
             </button>
           </NuxtLink>
@@ -23,7 +23,7 @@
             class="font-bold"
           >
             <p>Article suivant:</p>
-            <button class="font-medium text-right text-md outline-none text-rose-500 hover:underline">
+            <button class="font-medium text-right text-md outline-none text-rose-400 hover:underline">
               {{ next.title }}
             </button>
           </NuxtLink>

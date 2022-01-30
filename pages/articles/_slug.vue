@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="w-full h-10 bg-green-200 w-full sticky top-16 flex items-center z-50">
+      <div class="w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl mx-auto">
+        <nuxt-link to="/articles">
+          <button>
+            Retour
+          </button>
+        </nuxt-link>
+      </div>
+    </div>
     <div class="banner pt-16 w-full h-72 rounded-md">
       <img :src="require(`../../assets/images/${getImg(article.thumbnail)}`)" alt="article thumbnail" class="w-full h-full object-cover">
     </div>
