@@ -90,6 +90,12 @@ export default {
   padding: 8px 0;
 }
 
+.nuxt-content img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+}
+
 p {
   padding: 5px 0;
 }

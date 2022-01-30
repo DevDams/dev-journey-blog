@@ -4,11 +4,11 @@
       <div class="main w-11/12 sm:w-10/12 h-full mx-auto flex items-center justify-between">
       <!-- Left -->
         <div class="logo sm:w-auto h-full flex items-center justify-between">
-          <h1 class="text-white font-medium text-4xl px-3 py-5 flex items-center justify-center">
+          <h1 class="text-white font-medium text-4xl px-3 py-5 flex items-center justify-center" @click="closeMenu">
             <nuxt-link to="/" class="mt-1">Dev-x</nuxt-link>
           </h1>
           <div class="burger-btn">
-            <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" onclick="this.classList.toggle('active')" @click="() => slideMenu = !slideMenu">
+            <svg :class="slideMenu ? 'active' : ''" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" @click="openMenu">
               <path
                 class="line top"
                 d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
@@ -52,10 +52,10 @@
         <div :class="slideMenu ? 'show-menu' : 'hide-menu'" class="mobile-main-content bg-black flex flex-col items-center justify-center shadow-lg">
           <div class="menu-items z-20">
             <ul class="inline text-white">
-              <li class="block my-2">
+              <li class="block my-2" @click="openMenu">
                 <nuxt-link to="/" class="px-2 py-px text-xl">Accueil</nuxt-link>
               </li>
-              <li class="block my-2">
+              <li class="block my-2" @click="openMenu">
                 <nuxt-link to="/articles" class="px-2 py-px text-xl">Articles</nuxt-link>
               </li>
             </ul>
@@ -77,6 +77,7 @@
         </div>
       </div>
     </div>
+    <div :class="slideMenu ? 'block' : 'hidden'" class="bg-black/20 fixed top-0 w-full h-full" @click="closeMenu"></div>
   </div>
 </template>
 
@@ -86,21 +87,16 @@ export default {
     return {
       visibleSearchBar: false,
       slideMenu: false,
-      searchQuery: ''
     }
   },
-  watch: {
-    async searchQuery(searchQuery) {
-      if (!searchQuery) {
-        this.articles = []
-        return
-      }
-      this.articles = await this.$content('articles')
-        .limit(6)
-        .search(searchQuery)
-        .fetch()
+  methods: {
+    openMenu () {
+      this.slideMenu = !this.slideMenu
+    },
+    closeMenu () {
+      this.slideMenu = false
     }
-  }
+  },
 }
 </script>
 
@@ -194,6 +190,7 @@ export default {
     width: 100%;
     height: 250px;
     transition: .3s top ease;
+    z-index: 70;
   }
 
   .show-menu.mobile-main-content {
@@ -204,6 +201,7 @@ export default {
     width: 100%;
     height: 250px;
     transition: .3s top ease;
+    z-index: 70;
   }
 }
 </style>
