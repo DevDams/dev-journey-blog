@@ -20,6 +20,8 @@ fields:
     wysiwyg: false
     schema:
       format: markdown
+    max: 500
+    min: 300
   label: description
 - name: tags
   type: tag_list
