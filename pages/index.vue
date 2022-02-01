@@ -74,10 +74,9 @@ export default {
     this.articles = await this.$content('articles').sortBy('createdAt', 'desc').fetch().catch((err) => {
       console.error({ statusCode: 404, message: 'Article introuvable', error: err.message })
     })
+    
     this.lastArticle = this.articles.shift()
     this.recentArticles = this.articles
-    console.log('most recent articles', this.recentArticles)
-    console.log('last article', this.lastArticle)
   },
   methods: {
     getImg(img) {
