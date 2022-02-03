@@ -18,6 +18,6 @@ publish_date:
 ---
 Avant toute chose, il est important de signaler que ça fait maintenant trois ans que je suis dans le domaine de la programmation, et que ça fait plus d'un an et demi que j'ai choisi de me spécialiser en javascript.
 
-![](/assets/images/tezos-wpn1xnccgpw-unsplash.jpg)
+    <article-image src="tezos-wpn1xnccgpw-unsplash.jpg" alt="complete-kanban-board" />
 
 Si j'ai choisi javascript, c'est bien pour une raison.
