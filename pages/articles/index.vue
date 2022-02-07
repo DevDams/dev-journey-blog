@@ -1,10 +1,13 @@
 <template>
   <div>
     <div class="main">
-      <div class="header pt-32 pb-10 w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl sm:px-6 mx-auto">
+      <div class="header pt-28 pb-16 sm:pt-32 sm:pb-10 w-11/12 md:w-10/12 lg:w-9/12 max-w-screen-xl sm:px-6 mx-auto">
         <div class="title-search w-full h-16 flex items-center justify-between">
           <h1 class="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold">{{ title }}</h1>
-          <input v-model="searchQuery" autocomplete="off" type="text" name="search" id="search" placeholder="Rechercher..." class="bg-gray-100 border-2 border-black h-10 pl-4 text-black text-md outline-none rounded-lg block focus:shadow-lg focus:shadow-black/10 focus:border-2 focus:border-indigo-500">  
+          <div class="relative h-full flex items-center">
+            <input v-model="searchQuery" autocomplete="off" type="text" name="search" id="search" placeholder="Rechercher..." class="bg-gray-100 border-2 border-black h-10 pl-4 text-black text-md outline-none rounded-lg block focus:shadow-lg focus:shadow-black/10 focus:border-2 focus:border-indigo-500">
+            <img src="~/assets/svg/magnifier.svg" alt="search-icon" class="w-5 h-5 absolute right-4">
+          </div>
         </div>
       </div>
       <hr>
@@ -113,7 +116,7 @@ body {
     height: 100px;
     margin: auto;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-start;
   }
 
@@ -122,7 +125,12 @@ body {
   }
 
   .title-search input {
-    height: 100px;
+    height: 40px;
+    margin-top: 20px;
+  }
+
+  .title-search img {
+    margin-top: 20px;
   }
 }
 </style>

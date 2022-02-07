@@ -94,9 +94,16 @@ export default {
   width: 100%;
   height: 400px;
   object-fit: contain;
+  margin-top: 15px;
 }
 
 p {
   padding: 5px 0;
+}
+
+@media (max-width: 640px) {
+  .nuxt-content img {
+    height: auto;
+  }
 }
 </style>
