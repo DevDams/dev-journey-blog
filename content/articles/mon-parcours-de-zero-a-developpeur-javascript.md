@@ -6,14 +6,14 @@ tags:
 - motivation
 - cours
 - programmation
-thumbnail: "/assets/images/parcours.jpg"
+thumbnail: "/assets/images/tezos-wpn1xnccgpw-unsplash.jpg"
 title: Mon parcours de zéro à développeur javascript
 description: Aujourd’hui, je suis développeur javascript et il y a quelques années
   auparavant, je n'aurais pas pensé me trouver à ce niveau. Être développeur est quelque
   chose de vraiment passionnant, mais quand on a pas la motivation ni les ressources
   nécessaires pour y arriver, on est vite tenté d’abandonner. Mais j’y suis arrivé,
   et dans cet article je vous explique comment.
-publish_date: 2022-02-06T23:00:00Z
+publish_date: 2022-02-06T23:00:00.000+00:00
 
 ---
 Avant toute chose, il est important de signaler que ça fait maintenant trois ans que je suis dans le domaine de la programmation, et plus d'un an et demi que j'ai choisi de me spécialiser en javascript. Ce choix de me spécialiser en javascript, je l’ai fait par amour pour le langage et aussi pour sa grande popularité et la grande communauté de dev qu’il a. Mais bien avant javascript, il y en a eu d’autre langage que j’ai essayé sans pour autant me sentir à l’aise à les utiliser.
