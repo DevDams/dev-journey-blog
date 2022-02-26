@@ -37,6 +37,5 @@ fields:
     time_format: 
     display_utc: false
 pages:
-- content/articles/apprendre-a-coder-ou-se-rendre-et-quelle-formation-choisir.md
 - content/articles/mon-parcours-de-zero-a-developpeur-javascript.md
 - content/articles/mon-parcours-en-tant-que-developpeur-comment-tout-a-commence-et-ou-j-en-suis-actuellement.md
